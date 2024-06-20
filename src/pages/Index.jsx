@@ -1,7 +1,22 @@
-import { Box, Flex, IconButton, Image, Input, InputGroup, InputRightElement, Spacer } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Image, Input, InputGroup, InputRightElement, Spacer, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { FaSearch, FaMicrophone, FaBars, FaVideo, FaTh, FaBell } from "react-icons/fa";
 import SpotifyLogo from "/images/spotify-logo.svg";
 import InstagramLogo from "/images/instagram-logo.svg";
+
+const videoExamples = [
+  {
+    title: "How to Cook the Perfect Steak",
+    thumbnail: "/images/steak-thumbnail.jpg",
+  },
+  {
+    title: "10 Minute Yoga Routine for Beginners",
+    thumbnail: "/images/yoga-thumbnail.jpg",
+  },
+  {
+    title: "Top 10 JavaScript Tips and Tricks",
+    thumbnail: "/images/javascript-thumbnail.jpg",
+  },
+];
 
 const Index = () => {
   return (
@@ -23,6 +38,19 @@ const Index = () => {
         <IconButton aria-label="Apps" icon={<FaTh />} variant="ghost" marginRight="1rem" />
         <IconButton aria-label="Notifications" icon={<FaBell />} variant="ghost" marginRight="1rem" />
       </Flex>
+      <Box padding="1.5rem">
+        <Heading as="h2" size="xl" marginBottom="1.5rem">Video Examples</Heading>
+        <SimpleGrid columns={[1, null, 3]} spacing="1.5rem">
+          {videoExamples.map((video, index) => (
+            <Box key={index} boxShadow="md" borderRadius="md" overflow="hidden">
+              <Image src={video.thumbnail} alt={video.title} />
+              <Box padding="1rem">
+                <Text fontWeight="bold">{video.title}</Text>
+              </Box>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
     </Box>
   );
 };
